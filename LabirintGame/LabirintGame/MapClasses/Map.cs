@@ -57,7 +57,10 @@ namespace Labirint {
 
             for (int i = 0; i < L; i++) {
                 for (int j = 0; j < L; j++) {
-                    if (labirint[i, j] == 0) k0++;
+                    if (labirint[i, j] == 0) {
+                        k0++;
+                        if (rand.Next(1, 3) == 2) labirint[i, j] = 4;
+                    }
                     if (labirint[i, j] == 1) {
                         k1++;
                         if (rand.Next(1, 4) == 2) labirint[i, j] = 3;

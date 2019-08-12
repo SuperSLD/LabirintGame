@@ -4,21 +4,33 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/solya_0hvv578/Desktop/pr/C#/LabirintGame/LabirintGame/Content/blok_standart_sprayt2.png</File>
-    <File>C:/Users/solya_0hvv578/Desktop/pr/C#/LabirintGame/LabirintGame/Content/blok_standart_sprayt3.png</File>
-    <File>C:/Users/solya_0hvv578/Desktop/pr/C#/LabirintGame/LabirintGame/Content/blok_standart_sprayt4.png</File>
-    <File>C:/Users/solya_0hvv578/Desktop/pr/C#/LabirintGame/LabirintGame/Content/standart_backgraund2.png</File>
-    <File>C:/Users/solya_0hvv578/Desktop/pr/C#/LabirintGame/LabirintGame/Content/testUser.png</File>
-    <File>C:/Users/solya_0hvv578/Desktop/pr/C#/LabirintGame/LabirintGame/Content/user_standart1_1.png</File>
-    <File>C:/Users/solya_0hvv578/Desktop/pr/C#/LabirintGame/LabirintGame/Content/user_standart1_2.png</File>
-    <File>C:/Users/solya_0hvv578/Desktop/pr/C#/LabirintGame/LabirintGame/Content/user_standart2_1.png</File>
-    <File>C:/Users/solya_0hvv578/Desktop/pr/C#/LabirintGame/LabirintGame/Content/user_standart2_2.png</File>
-    <File>C:/Users/solya_0hvv578/Desktop/pr/C#/LabirintGame/LabirintGame/Content/user_standart3_1.png</File>
-    <File>C:/Users/solya_0hvv578/Desktop/pr/C#/LabirintGame/LabirintGame/Content/user_standart3_2.png</File>
-    <File>C:/Users/solya_0hvv578/Desktop/pr/C#/LabirintGame/LabirintGame/Content/user_standart4_1.png</File>
-    <File>C:/Users/solya_0hvv578/Desktop/pr/C#/LabirintGame/LabirintGame/Content/user_standart4_2.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/blok_standart_sprayt2.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/blok_standart_sprayt3.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/blok_standart_sprayt4.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/labirint_game.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/menu_button_exit.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/menu_button_online.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/menu_button_play.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/menu_button_r.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/standart_backgraund1.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/standart_backgraund2.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/testUser.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/user_standart1_1.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/user_standart1_2.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/user_standart2_1.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/user_standart2_2.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/user_standart3_1.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/user_standart3_2.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/user_standart4_1.png</File>
+    <File>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/user_standart4_2.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -1,4 +1,5 @@
 ﻿using Labirint;
+using LabirintGame.Classes;
 using LabirintGame.Labirint;
 using LabirintGame.LabirintClasses;
 using LabirintGame.Windows;
@@ -60,6 +61,7 @@ namespace LabirintGame.Windows {
             if (keyboardState.IsKeyDown(Keys.D)) user.Move(3, map.GetLabirint());
             if (keyboardState.IsKeyDown(Keys.S)) user.Move(4, map.GetLabirint());
             if (keyboardState.IsKeyDown(Keys.W)) user.Move(2, map.GetLabirint());
+            if (keyboardState.IsKeyDown(Keys.Escape)) Game1.state = 1;
         }
 
         int L; double windowK; int windowX; int windowY;
@@ -90,6 +92,9 @@ namespace LabirintGame.Windows {
                             case 5:
                                 DrawTile("blok_standart2", x, y);
                                 break;
+                            case 4:
+                                DrawTile("backgraund2", x, y);
+                                break;
                         }
                     } else {
                         DrawTile("blok_standart4", x, y);
@@ -116,8 +121,9 @@ namespace LabirintGame.Windows {
                                     Color.AliceBlue);
         }
 
+       
         private static void UpdateThread() {
-            while (true) {
+            while (!Game1.EXIT) {
                 map.SendInfo();
                 Thread.Sleep(100);
             }

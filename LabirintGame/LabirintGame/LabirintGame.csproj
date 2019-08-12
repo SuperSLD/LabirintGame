@@ -50,6 +50,7 @@
     <Compile Include="MapClasses\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windows\MenuWindow.cs" />
     <Compile Include="Windows\GameWindow.cs" />
     <Compile Include="Windows\Window.cs" />
   </ItemGroup>

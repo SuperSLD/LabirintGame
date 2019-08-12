@@ -1,4 +1,5 @@
 ﻿using Labirint;
+using LabirintGame.Classes;
 using LabirintGame.Labirint;
 using LabirintGame.LabirintClasses;
 using LabirintGame.Windows;
@@ -14,7 +15,7 @@ namespace LabirintGame {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         List<Window> windows = new List<Window>();
-        public static int state = 0;
+        public static int state = 1;
 
         TextureManager textureManager;
 
@@ -22,6 +23,8 @@ namespace LabirintGame {
         public static float SCREEN_HEIGHT;
         public static int TILE_SIZE;
         public static int USER_ID = 0;
+        public static bool EXIT = false;
+        public static bool HOST = false;
 
         public Game1() {
             graphics = new GraphicsDeviceManager(this);
@@ -40,6 +43,7 @@ namespace LabirintGame {
             TILE_SIZE = Window.ClientBounds.Height / 20;
 
             windows.Add(new GameWindow());
+            windows.Add(new MenuWindow());
 
             foreach (Window window in windows) {
                 window.Initialize();
@@ -70,6 +74,14 @@ namespace LabirintGame {
             textureManager.AddTexture("user_standart3_2", Content.Load<Texture2D>("user_standart3_2"));
             textureManager.AddTexture("user_standart4_1", Content.Load<Texture2D>("user_standart4_1"));
             textureManager.AddTexture("user_standart4_2", Content.Load<Texture2D>("user_standart4_2"));
+            textureManager.AddTexture("backgraund2", Content.Load<Texture2D>("standart_backgraund1"));
+            textureManager.AddTexture("logo", Content.Load<Texture2D>("labirint_game"));
+            textureManager.AddTexture("play", Content.Load<Texture2D>("menu_button_play"));
+            textureManager.AddTexture("online", Content.Load<Texture2D>("menu_button_online"));
+            textureManager.AddTexture("exit", Content.Load<Texture2D>("menu_button_exit"));
+            textureManager.AddTexture("border", Content.Load<Texture2D>("menu_button_r"));
+
+            WebSocketConnection.Connect();
         }
 
         /// <summary>
@@ -85,8 +97,10 @@ namespace LabirintGame {
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime) {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) {
-
+            if ((GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Enter))
+                && (state == 1 && MenuWindow.b == 2)) {
+                EXIT = true;
+                WebSocketConnection.Close();
                 Exit();
             }
 
