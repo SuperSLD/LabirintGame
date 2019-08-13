@@ -80,6 +80,7 @@ namespace LabirintGame {
             textureManager.AddTexture("online", Content.Load<Texture2D>("menu_button_online"));
             textureManager.AddTexture("exit", Content.Load<Texture2D>("menu_button_exit"));
             textureManager.AddTexture("border", Content.Load<Texture2D>("menu_button_r"));
+            textureManager.AddTexture("object_exit", Content.Load<Texture2D>("object_exit"));
 
             WebSocketConnection.Connect();
         }

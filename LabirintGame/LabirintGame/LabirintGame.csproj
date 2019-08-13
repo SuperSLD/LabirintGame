@@ -46,7 +46,9 @@
     <Compile Include="Classes\Subject.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Classes\TextureManager.cs" />
+    <Compile Include="MapClasses\Exit.cs" />
     <Compile Include="MapClasses\Map.cs" />
+    <Compile Include="MapClasses\MapObject.cs" />
     <Compile Include="MapClasses\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -2,6 +2,7 @@
 using LabirintGame.Classes;
 using LabirintGame.Labirint;
 using LabirintGame.LabirintClasses;
+using LabirintGame.MapClasses;
 using LabirintGame.Windows;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -18,7 +19,7 @@ namespace LabirintGame.Windows {
 
         static Map map;
         static User user;
-        int SEED = new Random().Next();
+        static int SEED = new Random().Next();
 
         /// <summary>
         /// Самый обычный пустой конструктор.
@@ -101,6 +102,14 @@ namespace LabirintGame.Windows {
                     }
                 }
             }
+            foreach (MapObject mapObject in map.GetObjects()) {
+                if (mapObject.GetTileX() >= user.GetTileX() - 30
+                    && mapObject.GetTileX() <= user.GetTileX() + 30
+                    && mapObject.GetTileY() >= user.GetTileY() - 12
+                    && mapObject.GetTileY() <= user.GetTileY() + 12) {
+                    mapObject.Draw(spriteBatch, textureManager, windowK, windowX, windowY);
+                }
+            }
 
             user.Draw(spriteBatch, textureManager, windowK);
         }
@@ -121,12 +130,36 @@ namespace LabirintGame.Windows {
                                     Color.AliceBlue);
         }
 
-       
+       /// <summary>
+       /// Поток обновления объектов.
+       /// </summary>
         private static void UpdateThread() {
             while (!Game1.EXIT) {
                 map.SendInfo();
                 Thread.Sleep(100);
             }
+        }
+
+        /// <summary>
+        /// Перезапск на основе случайного значения.
+        /// </summary>
+        public static void Restart() {
+            SEED = new Random().Next();
+            map = new Map(SEED);
+            map.LabirintGenerate(LABIRINT_SIZE);
+            user = new User(LABIRINT_SIZE);
+            map.AddUser(user);
+        }
+
+        /// <summary>
+        /// Перезапуск на основе заданного значения.
+        /// </summary>
+        /// <param name="seed"></param>
+        public static void Restart(int seed) {
+            map = new Map(seed);
+            map.LabirintGenerate(LABIRINT_SIZE);
+            user = new User(LABIRINT_SIZE);
+            map.AddUser(user);
         }
     }
 }

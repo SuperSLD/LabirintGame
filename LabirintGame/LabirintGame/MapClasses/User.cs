@@ -1,6 +1,7 @@
 ﻿using Labirint;
 using LabirintGame.Classes;
 using LabirintGame.LabirintClasses;
+using LabirintGame.MapClasses;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace LabirintGame.Labirint {
 
-    class User : Observer {
+    public class User : Observer {
         private int x;
         private int y;
         private int tileX;
@@ -40,7 +41,7 @@ namespace LabirintGame.Labirint {
         /// <summary>
         /// Обновление пользователя.
         /// </summary>
-        public void Update() {
+        public void Update(User user, int[,] labirint, List<MapObject> objects) {
             if (textCode == 2) {
                 textCode = 1;
             } else {

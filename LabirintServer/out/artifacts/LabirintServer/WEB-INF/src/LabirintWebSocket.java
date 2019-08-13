@@ -5,22 +5,24 @@ import javax.websocket.server.ServerEndpoint;
 import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 @ServerEndpoint("/labirint")
 public class LabirintWebSocket {
     public static ArrayList<String> log = new ArrayList<>();
 
-    private int USER_ID;
+    private int USER_ID = new Random().nextInt(Integer.MAX_VALUE);
 
     @OnOpen
     public void onOpen(Session session) {
-        log.add("new user connect");
+        log.add("<b>new user connect</b> " + USER_ID);
         session.setMaxIdleTimeout(1000*60*60*24);
-        System.out.println("new user connect");
+        System.out.println("new user connect " + USER_ID);
     }
     @OnClose
     public void onClose(Session session) {
-        log.add("user disconnect");
+        log.add("<b>user disconnect</b> " + USER_ID);
+        System.out.println("user disconnect " + USER_ID);
     }
 
     @OnMessage

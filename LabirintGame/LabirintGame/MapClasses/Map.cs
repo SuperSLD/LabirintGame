@@ -1,5 +1,6 @@
 ﻿using LabirintGame.Classes;
 using LabirintGame.Labirint;
+using LabirintGame.MapClasses;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +13,8 @@ namespace Labirint {
         private int l;
         private int[,] labirint;
         private Random rand;
+
+        private List<MapObject> objects = new List<MapObject>();
 
         /// <summary>
         /// Пустой конструктор
@@ -50,7 +53,7 @@ namespace Labirint {
 
             for (int i = 0; i < l; i++) {
                 if (labirint[l - 2, i] == 0) {
-                    labirint[l - 1, i] = 0;
+                    objects.Add(new Exit(l-2, i));
                     break;
                 }
             }
@@ -68,7 +71,8 @@ namespace Labirint {
                     }
                 }
             }
-            //}
+            labirint[2, l - 2] = 0;
+            objects.Add(new Exit(2, l - 2));
             return labirint;
         }
 
@@ -76,7 +80,10 @@ namespace Labirint {
         /// Обновление информации слушателей.
         /// </summary>
         public void SendInfo() {
-            user.Update();
+            user.Update(user, labirint, objects);
+            foreach (MapObject mapObject in objects) {
+                mapObject.Update(user, labirint, objects);
+            }
         }
 
         /// <summary>
@@ -158,6 +165,14 @@ namespace Labirint {
         /// <returns></returns>
         public int[,] GetLabirint() {
             return this.labirint;
+        }
+
+        /// <summary>
+        /// Вывод коллекции объектов.
+        /// </summary>
+        /// <returns></returns>
+        public List<MapObject> GetObjects() {
+            return this.objects;
         }
 
         /// <summary>

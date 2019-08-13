@@ -109,6 +109,18 @@
 /processorParam:TextureFormat=Color
 /build:menu_button_r.png
 
+#begin object_exit.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:object_exit.png
+
 #begin standart_backgraund1.png
 /importer:TextureImporter
 /processor:TextureProcessor

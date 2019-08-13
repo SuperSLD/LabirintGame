@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LabirintGame.Labirint;
+using LabirintGame.MapClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +12,6 @@ namespace LabirintGame.Classes {
         /// <summary>
         /// Прием информации от объекта.
         /// </summary>
-        void Update();
+        void Update(User user, int[,] labirint, List<MapObject> objects);
     }
 }
