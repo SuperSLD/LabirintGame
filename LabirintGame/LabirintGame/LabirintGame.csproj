@@ -41,6 +41,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Classes\TextWriter.cs" />
     <Compile Include="Classes\WebSocketConnection.cs" />
     <Compile Include="Classes\Observer.cs" />
     <Compile Include="Classes\Subject.cs" />

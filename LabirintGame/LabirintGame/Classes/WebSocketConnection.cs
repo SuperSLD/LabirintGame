@@ -30,7 +30,9 @@ namespace LabirintGame.Classes {
         /// Закрытие подключения.
         /// </summary>
         public static void Close() {
-            socket.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, cts.Token);
+            try {
+                socket.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, cts.Token);
+            } catch (Exception ex) { }
         }
     }
 }

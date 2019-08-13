@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using LabirintGame.Classes;
 using LabirintGame.LabirintClasses;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -23,7 +24,7 @@ namespace LabirintGame.Windows {
         /// </summary>
         /// <param name="textureManager"></param>
         /// <param name="batch"></param>
-        public override void LoadContent(TextureManager textureManager, SpriteBatch batch) {
+        public override void LoadContent(TextureManager textureManager, SpriteBatch batch, TextWriter textWriter) {
             this.spriteBatch = batch;
             this.textureManager = textureManager;
         }

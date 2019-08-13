@@ -43,7 +43,7 @@ namespace LabirintGame.Windows {
         /// </summary>
         /// <param name="textureManager"></param>
         /// <param name="batch"></param>
-        public override void LoadContent(TextureManager textureManager, SpriteBatch batch) {
+        public override void LoadContent(TextureManager textureManager, SpriteBatch batch, TextWriter textWriter) {
             this.spriteBatch = batch;
             this.textureManager = textureManager;
         }

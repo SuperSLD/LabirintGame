@@ -14,6 +14,8 @@ namespace LabirintGame {
     public class Game1 : Game {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        TextWriter textWriter;
+
         List<Window> windows = new List<Window>();
         public static int state = 1;
 
@@ -59,8 +61,10 @@ namespace LabirintGame {
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             textureManager = new TextureManager();
+            
+
             foreach (Window window in windows) {
-                window.LoadContent(textureManager, spriteBatch);
+                window.LoadContent(textureManager, spriteBatch, textWriter);
             }
             textureManager.AddTexture("backgraund1", Content.Load<Texture2D>("standart_backgraund2"));
             textureManager.AddTexture("testu", Content.Load<Texture2D>("testUser")); 
@@ -84,6 +88,17 @@ namespace LabirintGame {
             textureManager.AddTexture("object_exit", Content.Load<Texture2D>("object_exit"));
             textureManager.AddTexture("menu", Content.Load<Texture2D>("menu_button_menu"));
             textureManager.AddTexture("restart", Content.Load<Texture2D>("menu_button_restart"));
+
+            textureManager.AddTexture("num_0", Content.Load<Texture2D>("Numbers/num_0"));
+            textureManager.AddTexture("num_1", Content.Load<Texture2D>("Numbers/num_1"));
+            textureManager.AddTexture("num_2", Content.Load<Texture2D>("Numbers/num_2"));
+            textureManager.AddTexture("num_3", Content.Load<Texture2D>("Numbers/num_3"));
+            textureManager.AddTexture("num_4", Content.Load<Texture2D>("Numbers/num_4"));
+            textureManager.AddTexture("num_5", Content.Load<Texture2D>("Numbers/num_5"));
+            textureManager.AddTexture("num_6", Content.Load<Texture2D>("Numbers/num_6"));
+            textureManager.AddTexture("num_7", Content.Load<Texture2D>("Numbers/num_7"));
+            textureManager.AddTexture("num_8", Content.Load<Texture2D>("Numbers/num_8"));
+            textureManager.AddTexture("num_9", Content.Load<Texture2D>("Numbers/num_9"));
 
             WebSocketConnection.Connect();
         }

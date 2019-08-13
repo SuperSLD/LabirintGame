@@ -1,4 +1,5 @@
-﻿using LabirintGame.LabirintClasses;
+﻿using LabirintGame.Classes;
+using LabirintGame.LabirintClasses;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace LabirintGame.Windows {
 
         public abstract void Initialize();
 
-        public abstract void LoadContent(TextureManager textureManager, SpriteBatch batch);
+        public abstract void LoadContent(TextureManager textureManager, SpriteBatch batch, TextWriter textWriter);
 
         public abstract void Update();
         public abstract void Draw();

@@ -150,3 +150,13 @@ C:\Users\Леонид\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\bi
 C:\Users\Леонид\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\bin\Windows\x86\Debug\Content\object_exit.xnb
 C:\Users\solya_0hvv578\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\bin\Windows\x86\Debug\Content\menu_button_menu.xnb
 C:\Users\solya_0hvv578\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\bin\Windows\x86\Debug\Content\menu_button_restart.xnb
+C:\Users\Леонид\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\bin\Windows\x86\Debug\Content\Numbers\num_0.xnb
+C:\Users\Леонид\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\bin\Windows\x86\Debug\Content\Numbers\num_1.xnb
+C:\Users\Леонид\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\bin\Windows\x86\Debug\Content\Numbers\num_2.xnb
+C:\Users\Леонид\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\bin\Windows\x86\Debug\Content\Numbers\num_3.xnb
+C:\Users\Леонид\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\bin\Windows\x86\Debug\Content\Numbers\num_4.xnb
+C:\Users\Леонид\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\bin\Windows\x86\Debug\Content\Numbers\num_5.xnb
+C:\Users\Леонид\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\bin\Windows\x86\Debug\Content\Numbers\num_6.xnb
+C:\Users\Леонид\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\bin\Windows\x86\Debug\Content\Numbers\num_7.xnb
+C:\Users\Леонид\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\bin\Windows\x86\Debug\Content\Numbers\num_8.xnb
+C:\Users\Леонид\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\bin\Windows\x86\Debug\Content\Numbers\num_9.xnb
