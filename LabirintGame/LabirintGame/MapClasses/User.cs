@@ -89,7 +89,6 @@ namespace LabirintGame.Labirint {
             tileX = x / 1000;
             tileY = y / 1000;
 
-            /*
             // Проверка пересечений по Y
             if ((tileY+1)*1000 - y <= speed + 10)
             if ((labirint[tileX, tileY] % 2 == 1)
@@ -124,7 +123,7 @@ namespace LabirintGame.Labirint {
             }
 
             tileX = x / 1000;
-            tileY = y / 1000; */
+            tileY = y / 1000;
 
         }
 
