@@ -145,3 +145,6 @@ C:\Users\solya_0hvv578\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\o
 C:\Users\solya_0hvv578\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\obj\x86\Debug\LabirintGame.exe
 C:\Users\solya_0hvv578\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\obj\x86\Debug\LabirintGame.pdb
 C:\Users\solya_0hvv578\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\bin\Windows\x86\Debug\Content\object_exit.xnb
+C:\Users\Леонид\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\bin\Windows\x86\Debug\Content\menu_button_menu.xnb
+C:\Users\Леонид\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\bin\Windows\x86\Debug\Content\menu_button_restart.xnb
+C:\Users\Леонид\Documents\GitHub\LabirintGame\LabirintGame\LabirintGame\bin\Windows\x86\Debug\Content\object_exit.xnb

@@ -48,13 +48,12 @@ namespace LabirintGame.Windows {
             this.textureManager = textureManager;
         }
 
-        Thread updateThread = new Thread(UpdateThread);
+        private static Thread updateThread;
 
         /// <summary>
         /// Обновление логики.
         /// </summary>
         public override void Update() {
-            if (!updateThread.IsAlive) updateThread.Start();
 
             KeyboardState keyboardState = Keyboard.GetState();
 
@@ -134,7 +133,7 @@ namespace LabirintGame.Windows {
        /// Поток обновления объектов.
        /// </summary>
         private static void UpdateThread() {
-            while (!Game1.EXIT) {
+            while (!Game1.EXIT && Game1.state == 0){
                 map.SendInfo();
                 Thread.Sleep(100);
             }
@@ -149,6 +148,9 @@ namespace LabirintGame.Windows {
             map.LabirintGenerate(LABIRINT_SIZE);
             user = new User(LABIRINT_SIZE);
             map.AddUser(user);
+
+            updateThread = new Thread(UpdateThread);
+            updateThread.Start();
         }
 
         /// <summary>
@@ -160,6 +162,9 @@ namespace LabirintGame.Windows {
             map.LabirintGenerate(LABIRINT_SIZE);
             user = new User(LABIRINT_SIZE);
             map.AddUser(user);
+
+            updateThread = new Thread(UpdateThread);
+            updateThread.Start();
         }
     }
 }

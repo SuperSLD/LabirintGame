@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using LabirintGame.LabirintClasses;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace LabirintGame.Windows {
     class RestartWindow : Window {
-        
+
+        private int b = 0;
+
         public override void Initialize() {
             
         }
@@ -20,14 +24,31 @@ namespace LabirintGame.Windows {
         /// <param name="textureManager"></param>
         /// <param name="batch"></param>
         public override void LoadContent(TextureManager textureManager, SpriteBatch batch) {
-            
+            this.spriteBatch = batch;
+            this.textureManager = textureManager;
         }
 
         /// <summary>
         /// Обновление логики.
         /// </summary>
         public override void Update() {
+            KeyboardState keyboardState = Keyboard.GetState();
 
+            if (keyboardState.IsKeyDown(Keys.W)) b = 0;
+            if (keyboardState.IsKeyDown(Keys.S)) b = 1;
+
+            if (keyboardState.IsKeyDown(Keys.Enter)) {
+                switch (b) {
+                    case 0:
+                        GameWindow.Restart();
+                        Game1.state = 0;
+                        break;
+                    case 1:
+                        Game1.state = 1;
+                        Thread.Sleep(100);
+                        break;
+                }
+            }
         }
 
         /// <summary>
@@ -38,7 +59,7 @@ namespace LabirintGame.Windows {
 
             for (int x = -30; x < 30; x++) {
                 for (int y = -12; y < 12; y++) {
-                    if ((x <= -9 || x >= 9) && (y <= -5 || y >= 5)) {
+                    if (x <= -4 || x >= 3 || y <= -4 || y >= 5) {
                         int i = rand.Next(1, 4);
                         switch (i) {
                             case 1:
@@ -94,7 +115,34 @@ namespace LabirintGame.Windows {
                     }
                 }
             }
-            //РОДОЛЖЕНИЕ ОТРИСОВКИ  
+            //ПРОДОЛЖЕНИЕ ОТРИСОВКИ  
+            spriteBatch.Draw(textureManager.GetTexture2D("restart"), new Rectangle(
+                                (int)(Game1.SCREEN_WIDTH / 2 - 2 * Game1.TILE_SIZE),
+                                (int)(8 * Game1.TILE_SIZE),
+                                Game1.TILE_SIZE * 4,
+                                Game1.TILE_SIZE * 2),
+                                Color.AliceBlue);
+            if (b == 0)
+                spriteBatch.Draw(textureManager.GetTexture2D("border"), new Rectangle(
+                                    (int)(Game1.SCREEN_WIDTH / 2 - 2 * Game1.TILE_SIZE),
+                                    (int)(8 * Game1.TILE_SIZE),
+                                    Game1.TILE_SIZE * 4,
+                                    Game1.TILE_SIZE * 2),
+                                    Color.AliceBlue);
+
+            spriteBatch.Draw(textureManager.GetTexture2D("menu"), new Rectangle(
+                                (int)(Game1.SCREEN_WIDTH / 2 - 2 * Game1.TILE_SIZE),
+                                (int)(12 * Game1.TILE_SIZE),
+                                Game1.TILE_SIZE * 4,
+                                Game1.TILE_SIZE * 2),
+                                Color.AliceBlue);
+            if (b == 1)
+                spriteBatch.Draw(textureManager.GetTexture2D("border"), new Rectangle(
+                                    (int)(Game1.SCREEN_WIDTH / 2 - 2 * Game1.TILE_SIZE),
+                                    (int)(12 * Game1.TILE_SIZE),
+                                    Game1.TILE_SIZE * 4,
+                                    Game1.TILE_SIZE * 2),
+                                    Color.AliceBlue);
         }
     }
 }

@@ -71,8 +71,7 @@ namespace Labirint {
                     }
                 }
             }
-            labirint[2, l - 2] = 0;
-            objects.Add(new Exit(2, l - 2));
+            
             return labirint;
         }
 
