@@ -14,7 +14,7 @@ namespace LabirintGame.MapClasses {
         public override void Update(User user, int[,] labirint, List<MapObject> objects) {
             if (user.GetX() >= this.x && user.GetX() + user.GetSize() <= this.x + 1000
                    && user.GetY() >= this.y && user.GetY() + user.GetSize() <= this.y + 1000) {
-                Game1.state = 1;
+                Game1.state = 2;
             }
         }
     }

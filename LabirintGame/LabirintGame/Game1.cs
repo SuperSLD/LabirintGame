@@ -44,6 +44,7 @@ namespace LabirintGame {
 
             windows.Add(new GameWindow());
             windows.Add(new MenuWindow());
+            windows.Add(new RestartWindow());
 
             foreach (Window window in windows) {
                 window.Initialize();

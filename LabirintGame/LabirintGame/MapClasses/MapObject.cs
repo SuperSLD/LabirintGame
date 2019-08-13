@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LabirintGame.MapClasses {
-    public class MapObject : Observer{
+    public  class MapObject : Observer{
         protected int x;
         protected int y;
         protected int tileX;
@@ -87,6 +87,8 @@ namespace LabirintGame.MapClasses {
         /// <param name="user"></param>
         /// <param name="labirint"></param>
         /// <param name="objects"></param>
-        virtual public void Update(User user, int[,] labirint, List<MapObject> objects) {}
+        virtual public void Update(User user, int[,] labirint, List<MapObject> objects) {
+
+        }
     }
 }
