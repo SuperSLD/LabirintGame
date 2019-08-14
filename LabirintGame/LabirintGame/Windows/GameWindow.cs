@@ -144,9 +144,11 @@ namespace LabirintGame.Windows {
        /// Поток обновления объектов.
        /// </summary>
         private static void UpdateThread() {
-            while (!Game1.EXIT && Game1.state == 0){
-                map.SendInfo();
-                Thread.Sleep(100);
+            while (!Game1.EXIT){
+                if (Game1.state == 0) {
+                    map.SendInfo();
+                    Thread.Sleep(100);
+                }
             }
         }
 
