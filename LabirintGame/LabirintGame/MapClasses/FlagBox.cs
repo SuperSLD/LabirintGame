@@ -14,9 +14,8 @@ namespace LabirintGame.MapClasses {
         private bool isCahge = false;
 
         public override void Update(User user, int[,] labirint, List<MapObject> objects) {
-            if (user.GetX() >= this.x && user.GetX() + user.GetSize() <= this.x + 1000
-                   && user.GetY() >= this.y && user.GetY() + user.GetSize() <= this.y + 1000 && ! isCahge) {
-                user.SetFlags(user.GetFlags() + new Random().Next(1, 8));
+            if (user.GetX() + user.GetSize() / 2 >= this.x && user.GetX() + user.GetSize() / 2 <= this.x + 1000
+                   && user.GetY() + user.GetSize() / 2 >= this.y && user.GetY() + user.GetSize() / 2 <= this.y + 1000) {
                 isCahge = true;
                 texture = "backgraund2";
             }
