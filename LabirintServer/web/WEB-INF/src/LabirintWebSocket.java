@@ -12,6 +12,7 @@ public class LabirintWebSocket {
     public static ArrayList<String> log = new ArrayList<>();
 
     private int USER_ID = new Random().nextInt(Integer.MAX_VALUE);
+    private static int SEED = new Random().nextInt(Integer.MAX_VALUE);
 
     @OnOpen
     public void onOpen(Session session) {
@@ -28,6 +29,7 @@ public class LabirintWebSocket {
     @OnMessage
     public void onMessage(String message, Session session) {
         System.out.println(message);
+        log.add("<b>message</b> " + message);
         log.add(message);
     }
 

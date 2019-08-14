@@ -53,6 +53,7 @@ namespace LabirintGame.Windows {
                         Game1.state = 0;
                         break;
                     case 1:
+                        WebSocketConnection.SendMessage("getseed<!>0");
                         break;
                     case 2:
                         break;

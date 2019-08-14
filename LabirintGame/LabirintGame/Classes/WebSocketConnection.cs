@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 namespace LabirintGame.Classes {
 
     class WebSocketConnection {
-        public const string SERVER_WS_URI = "ws://192.168.1.55:8080/labirint";
+        //public const string SERVER_WS_URI = "ws://192.168.1.55:8080/labirint";
+        public const string SERVER_WS_URI = "ws://10.6.193.20:8080/labirint";
 
         private static ClientWebSocket socket;
         private static CancellationTokenSource cts;
@@ -24,6 +25,16 @@ namespace LabirintGame.Classes {
             cts = new CancellationTokenSource();
 
             socket.ConnectAsync(new Uri(SERVER_WS_URI), cts.Token);
+        }
+
+        /// <summary>
+        /// Отправка сообщения.
+        /// </summary>
+        /// <param name="message"></param>
+        public static void SendMessage(string message) {
+            byte[] buffer = Encoding.UTF8.GetBytes(message);
+            ArraySegment<byte> segment = new ArraySegment<byte>(buffer);
+            socket.SendAsync(segment, WebSocketMessageType.Text, false, new CancellationToken());
         }
 
         /// <summary>
