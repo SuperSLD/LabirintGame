@@ -61,7 +61,7 @@ namespace LabirintGame {
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             textureManager = new TextureManager();
-            
+            textWriter = new TextWriter(textureManager);
 
             foreach (Window window in windows) {
                 window.LoadContent(textureManager, spriteBatch, textWriter);
@@ -99,6 +99,9 @@ namespace LabirintGame {
             textureManager.AddTexture("num_7", Content.Load<Texture2D>("Numbers/num_7"));
             textureManager.AddTexture("num_8", Content.Load<Texture2D>("Numbers/num_8"));
             textureManager.AddTexture("num_9", Content.Load<Texture2D>("Numbers/num_9"));
+
+            textureManager.AddTexture("object_flag", Content.Load<Texture2D>("object_flag"));
+            textureManager.AddTexture("object_flagbox", Content.Load<Texture2D>("object_flagbox"));
 
             WebSocketConnection.Connect();
         }

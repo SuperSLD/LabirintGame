@@ -18,6 +18,7 @@ namespace LabirintGame.Labirint {
         private int tileX;
         private int tileY;
 
+        private int flags = 4;
         private int L;
 
         private int size;
@@ -176,6 +177,22 @@ namespace LabirintGame.Labirint {
         /// <returns></returns>
         public int GetSize() {
             return this.size;
+        }
+
+        /// <summary>
+        /// изменение количества флагов.
+        /// </summary>
+        /// <param name="flags"></param>
+        public void SetFlags(int flags) {
+            this.flags = flags;
+        }
+
+        /// <summary>
+        /// Получение количества флагов.
+        /// </summary>
+        /// <returns></returns>
+        public int GetFlags() {
+            return this.flags;
         }
     }
 }

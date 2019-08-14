@@ -11,6 +11,7 @@ namespace LabirintGame.Windows {
     public abstract class Window {
         protected TextureManager textureManager;
         protected SpriteBatch spriteBatch;
+        protected TextWriter textWriter;
 
         public Window() {
             this.spriteBatch = spriteBatch;

@@ -46,6 +46,7 @@ namespace LabirintGame.Windows {
         public override void LoadContent(TextureManager textureManager, SpriteBatch batch, TextWriter textWriter) {
             this.spriteBatch = batch;
             this.textureManager = textureManager;
+            this.textWriter = textWriter;
         }
 
         private static Thread updateThread;
@@ -57,10 +58,11 @@ namespace LabirintGame.Windows {
 
             KeyboardState keyboardState = Keyboard.GetState();
 
-            if (keyboardState.IsKeyDown(Keys.A)) user.Move(1, map.GetLabirint());
-            if (keyboardState.IsKeyDown(Keys.D)) user.Move(3, map.GetLabirint());
-            if (keyboardState.IsKeyDown(Keys.S)) user.Move(4, map.GetLabirint());
-            if (keyboardState.IsKeyDown(Keys.W)) user.Move(2, map.GetLabirint());
+            if (keyboardState.IsKeyDown(Keys.A))      user.Move(1, map.GetLabirint());
+            if (keyboardState.IsKeyDown(Keys.D))      user.Move(3, map.GetLabirint());
+            if (keyboardState.IsKeyDown(Keys.S))      user.Move(4, map.GetLabirint());
+            if (keyboardState.IsKeyDown(Keys.W))      user.Move(2, map.GetLabirint());
+            if (keyboardState.IsKeyDown(Keys.Space))  map.AddFlag();
             if (keyboardState.IsKeyDown(Keys.Escape)) Game1.state = 1;
         }
 
@@ -111,6 +113,15 @@ namespace LabirintGame.Windows {
             }
 
             user.Draw(spriteBatch, textureManager, windowK);
+
+            spriteBatch.Draw(textureManager.GetTexture2D("object_flagbox"),
+                                    new Rectangle(
+                                        1 * Game1.TILE_SIZE,
+                                        1 * Game1.TILE_SIZE,
+                                        Game1.TILE_SIZE*2,
+                                        Game1.TILE_SIZE*2),
+                                    Color.AliceBlue);
+            textWriter.DrawText(spriteBatch, user.GetFlags().ToString(), 1 * Game1.TILE_SIZE, 2 * Game1.TILE_SIZE, Game1.TILE_SIZE);
         }
 
         /// <summary>

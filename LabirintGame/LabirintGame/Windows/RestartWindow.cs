@@ -45,8 +45,9 @@ namespace LabirintGame.Windows {
                         Game1.state = 0;
                         break;
                     case 1:
+                        // TODO: Загнать паузу в отдельный поток.
                         Game1.state = 1;
-                        Thread.Sleep(100);
+                        Thread.Sleep(200);
                         break;
                 }
             }

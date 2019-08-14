@@ -71,7 +71,11 @@ namespace Labirint {
                     }
                 }
             }
-            
+
+            labirint[2, l - 3] = 0;
+            objects.Add(new Exit(2, l - 3));
+
+
             return labirint;
         }
 
@@ -102,6 +106,7 @@ namespace Labirint {
                     n = rand.Next(1, 5);
                     if (napr.Count == 0) return -1;
                 }
+                int lastX = x; int lastY = y;
                 if (n == 1) {
                     labirint[x, y]     = 0;
                     labirint[x - 1, y] = 0;
@@ -126,6 +131,7 @@ namespace Labirint {
 
                     y += 2;
                 }
+                if (IsClear(x, y).Count == 0 && rand.Next(1, 10) == 3) objects.Add(new FlagBox(lastX, lastY));
             }
             for (int i = 0; i < IsClear(x, y).Count; i++) {
                 CreateBranch(x, y);
@@ -180,6 +186,30 @@ namespace Labirint {
         /// <param name="user">Пользователь.</param>
         public void AddUser(User user) {
             this.user = user;
+        }
+
+        /// <summary>
+        /// Добавлениие флага на карту
+        /// </summary>
+        public void AddFlag() {
+            if (user.GetFlags() > 0 
+                && SearchMapObject((user.GetX() + user.GetSize()/2)/1000, (user.GetY() + user.GetSize()/2) / 1000) < 0) {
+                user.SetFlags(user.GetFlags() - 1);
+                objects.Add(new Flag((user.GetX() + user.GetSize()/2) / 1000, (user.GetY() + user.GetSize()/2) / 1000));
+            }
+        }
+
+        /// <summary>
+        /// Поиск объекта в списке по координатам.
+        /// </summary>
+        /// <returns>Индекс объекта в списке.</returns>
+        public int SearchMapObject(int x, int y) {
+            int ret = -1;
+            for (int i = 0; i < objects.Count; i++) {
+                if (y == objects[i].GetTileY() && x == objects[i].GetTileX()) ret = i;
+            }
+
+            return ret;
         }
     }
 }
