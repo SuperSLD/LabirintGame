@@ -51,7 +51,7 @@ namespace LabirintGame.Windows {
             this.textWriter = textWriter;
             updateThread = new Thread(UpdateThread);
             updateThread.Start();
-            //new Thread(SocketReadThread).Start();
+            new Thread(SocketReadThread).Start();
             new Thread(SocketSendThread).Start();
         }
 
@@ -177,7 +177,8 @@ namespace LabirintGame.Windows {
             while (!Game1.EXIT) if (Game1.state == 0 && Game1.ONLINE) {
                     string message = WebSocketConnection.ReceiveMessage().Result;
                     string[] mes = message.Split('&');
-                    
+                    Console.WriteLine(message);
+
                     switch (mes[0]) {
                         case "xyn":
                             if (users[mes[4]] == null) {
