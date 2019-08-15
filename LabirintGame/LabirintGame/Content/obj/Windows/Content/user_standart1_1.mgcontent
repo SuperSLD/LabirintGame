@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/solya_0hvv578/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/user_standart1_1.png</SourceFile>
-  <SourceTime>2019-08-15T03:10:06.9442202+03:00</SourceTime>
-  <DestFile>C:/Users/solya_0hvv578/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/bin/Windows/Content/user_standart1_1.xnb</DestFile>
-  <DestTime>2019-08-15T03:13:08.3440856+03:00</DestTime>
+  <SourceFile>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/user_standart1_1.png</SourceFile>
+  <SourceTime>2019-08-15T03:33:40.7845012+03:00</SourceTime>
+  <DestFile>C:/Users/Леонид/Documents/GitHub/LabirintGame/LabirintGame/LabirintGame/Content/bin/Windows/Content/user_standart1_1.xnb</DestFile>
+  <DestTime>2019-08-15T03:34:56.5004838+03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T19:35:54+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

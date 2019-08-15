@@ -22,8 +22,6 @@ namespace LabirintGame.Windows {
         static int SEED = new Random().Next();
         private static Thread updateThread;
 
-        private static Dictionary<string, User> users;
-
         /// <summary>
         /// Самый обычный пустой конструктор.
         /// </summary>
@@ -51,8 +49,7 @@ namespace LabirintGame.Windows {
             this.textWriter = textWriter;
             updateThread = new Thread(UpdateThread);
             updateThread.Start();
-            new Thread(SocketReadThread).Start();
-            new Thread(SocketSendThread).Start();
+
         }
 
         /// <summary>
@@ -116,9 +113,6 @@ namespace LabirintGame.Windows {
                 }
             }
 
-            foreach (string id in users.Keys) {
-                users[id].Draw(spriteBatch, textureManager, windowK);
-            }
             user.Draw(spriteBatch, textureManager, windowK);
 
             spriteBatch.Draw(textureManager.GetTexture2D("object_flagbox"),
@@ -153,45 +147,10 @@ namespace LabirintGame.Windows {
         private static void UpdateThread() {
             while (!Game1.EXIT) if (Game1.state == 0) {
                     map.SendInfo();
-                    foreach (string id in users.Keys) {
-                        users[id].Update(null, null, null);
-                    }
                     Thread.Sleep(100);
             }
         }
 
-        /// <summary>
-        /// Поток отправки сообщений на сервер.
-        /// </summary>
-        private static void SocketSendThread() {
-            while (!Game1.EXIT) if (Game1.state == 0 && Game1.ONLINE) {
-                    Thread.Sleep(5);
-                    WebSocketConnection.SendString("sendxyn<!>" + user.GetX() + "<!>" + user.GetY() + "<!>" + user.GetN());
-            }
-        }
-
-        /// <summary>
-        /// Поток получения сообщений на сервер.
-        /// </summary>
-        private static void SocketReadThread() {
-            while (!Game1.EXIT) if (Game1.state == 0 && Game1.ONLINE) {
-                    string message = WebSocketConnection.ReceiveMessage().Result;
-                    string[] mes = message.Split('&');
-                    Console.WriteLine(message);
-
-                    switch (mes[0]) {
-                        case "xyn":
-                            if (users[mes[4]] == null) {
-                                users.Add(mes[4] ,new User(LABIRINT_SIZE));
-                            } else {
-                                users[mes[4]].SetX(Convert.ToInt32(mes[1]));
-                                users[mes[4]].SetY(Convert.ToInt32(mes[2]));
-                                users[mes[4]].SetN(Convert.ToInt32(mes[3]));
-                            }
-                            break;
-                    }
-            }
-        }
         /// <summary>
         /// Перезапск на основе случайного значения.
         /// </summary>
@@ -201,8 +160,6 @@ namespace LabirintGame.Windows {
             map.LabirintGenerate(LABIRINT_SIZE);
             user = new User(LABIRINT_SIZE);
             map.AddUser(user);
-
-            users = new Dictionary<string, User>();
         }
 
         /// <summary>
@@ -214,8 +171,6 @@ namespace LabirintGame.Windows {
             map.LabirintGenerate(LABIRINT_SIZE);
             user = new User(LABIRINT_SIZE);
             map.AddUser(user);
-
-            users = new Dictionary<string, User>();
         }
     }
 }
