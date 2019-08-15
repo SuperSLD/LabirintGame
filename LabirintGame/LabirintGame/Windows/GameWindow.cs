@@ -213,7 +213,7 @@ namespace LabirintGame.Windows {
                 if (Game1.ONLINE) {
                     try {
                         string message = WebSocketConnection.ReceiveMessage().Result;
-                        Console.WriteLine(message);
+                        Console.WriteLine("SocketReadThread : " + message);
                         string[] mes = message.Split('&');
                         if (mes[0] == "xyn") {
                             try {

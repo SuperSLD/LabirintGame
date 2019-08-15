@@ -196,18 +196,22 @@ namespace LabirintGame.Windows {
 
         private void SeedThread() {
             WebSocketConnection.SendString("getseed<!>0");
-            string message = "";
-            while (message.Split('&')[0] != "seed") {
-                try {
-                    message = WebSocketConnection.ReceiveMessage().Result;
-                } catch (Exception) {
-                    break;
+            Console.WriteLine("send: getseed");
+            Thread.Sleep(100);
+            string message = "0&0";
+            while (!Game1.EXIT) {
+                message = WebSocketConnection.ReceiveMessage().Result;
+                if (message == null) {
+                    message = "0&0";
+                }
+                if (message.Split('&')[0].Equals("seed")) {
+                    GameWindow.Restart(Convert.ToInt32(message.Split('&')[1]));
+                    Game1.state = 0;
+                    Game1.ONLINE = true;
+                    threadStart = false;
+                    return;
                 }
             }
-            GameWindow.Restart(Convert.ToInt32(message.Split('&')[1]));
-            Game1.state = 0;
-            Game1.ONLINE = true;
-            threadStart = false;
         }
     }
 }

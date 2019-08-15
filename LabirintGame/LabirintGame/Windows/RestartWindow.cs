@@ -41,6 +41,7 @@ namespace LabirintGame.Windows {
             if (keyboardState.IsKeyDown(Keys.Enter)) {
                 switch (b) {
                     case 0:
+                        Game1.ONLINE = false;
                         GameWindow.Restart();
                         Game1.state = 0;
                         break;
