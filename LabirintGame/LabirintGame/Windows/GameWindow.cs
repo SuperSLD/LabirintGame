@@ -23,6 +23,7 @@ namespace LabirintGame.Windows {
 
         static int SEED = new Random().Next();
         private static Thread updateThread;
+        private static bool objectUpdate = false;
 
         /// <summary>
         /// Самый обычный пустой конструктор.
@@ -174,6 +175,7 @@ namespace LabirintGame.Windows {
             user = new User(LABIRINT_SIZE);
             list = new Dictionary<string, User>();
             map.AddUser(user);
+            objectUpdate = false;
         }
 
         /// <summary>
@@ -186,6 +188,8 @@ namespace LabirintGame.Windows {
             user = new User(LABIRINT_SIZE);
             map.AddUser(user);
             list = new Dictionary<string, User>();
+
+            objectUpdate = false;
         }
 
         /// <summary>
@@ -196,6 +200,11 @@ namespace LabirintGame.Windows {
                 int x1 = 0; int y1 = 0;
                 if (Game1.ONLINE) {
                     Thread.Sleep(10);
+                    // TODO: Получить список объектов.
+                    /*if (!objectUpdate) {
+                        objectUpdate = true;
+                        WebSocketConnection.SendString("sendobjectinfo<!>0");
+                    }*/
                     if (x1 != user.GetX() || y1 != user.GetY()) {
                         WebSocketConnection.SendString("sendxyn<!>" + user.GetX() + "<!>" + user.GetY() + "<!>"
                              + user.GetN() + "<!>");
@@ -224,6 +233,8 @@ namespace LabirintGame.Windows {
                                 list.Add(mes[4], new User(LABIRINT_SIZE));
                                 Console.WriteLine("connect user id: " + mes[4]);
                             }
+                        } else if (mes[0] == "addflag") {
+                            map.AddFlag(Convert.ToInt32(mes[1]), Convert.ToInt32(mes[2]));
                         }
                     } catch (Exception) { }
                 }

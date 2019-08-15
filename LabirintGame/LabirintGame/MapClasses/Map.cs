@@ -196,7 +196,16 @@ namespace Labirint {
                 && SearchMapObject((user.GetX() + user.GetSize()/2)/1000, (user.GetY() + user.GetSize()/2) / 1000) < 0) {
                 user.SetFlags(user.GetFlags() - 1);
                 objects.Add(new Flag((user.GetX() + user.GetSize()/2) / 1000, (user.GetY() + user.GetSize()/2) / 1000));
+                WebSocketConnection.SendString("sendflag<!>" + ((user.GetX() + user.GetSize() / 2) / 1000).ToString()
+                    + "<!>" + ((user.GetX() + user.GetSize() / 2) / 1000).ToString());
             }
+        }
+
+        /// <summary>
+        /// Добавлениие флага на карту по координатам
+        /// </summary>
+        public void AddFlag(int x, int y) {
+                objects.Add(new Flag(x, y));
         }
 
         /// <summary>
