@@ -18,7 +18,7 @@ namespace LabirintGame {
 
         List<Window> windows = new List<Window>();
         public static int state = 1;
-
+       
         TextureManager textureManager;
 
         public static float SCREEN_WIDTH;
@@ -26,7 +26,7 @@ namespace LabirintGame {
         public static int TILE_SIZE;
         public static int USER_ID = 0;
         public static bool EXIT = false;
-        public static bool HOST = false;
+        public static bool ONLINE = false;
 
         public Game1() {
             graphics = new GraphicsDeviceManager(this);

@@ -170,6 +170,21 @@ namespace LabirintGame.Labirint {
             return this.y;
         }
 
+        /// <summary>
+        /// Возврат координаты по X
+        /// </summary>
+        /// <returns></returns>
+        public void SetX(int x) {
+            this.x = x;
+        }
+
+        /// <summary>
+        /// Возврат координаты по Y
+        /// </summary>
+        /// <returns></returns>
+        public void SetY(int y) {
+            this.y = y;
+        }
 
         /// <summary>
         /// Возврат размеров игрока.
@@ -193,6 +208,22 @@ namespace LabirintGame.Labirint {
         /// <returns></returns>
         public int GetFlags() {
             return this.flags;
+        }
+
+        /// <summary>
+        /// Получение напрвления пользователя.
+        /// </summary>
+        /// <returns></returns>
+        public int GetN() {
+            return this.flags;
+        }
+
+        /// <summary>
+        /// Установка напрвления пользователя.
+        /// </summary>
+        /// <returns></returns>
+        public void SetN(int mov) {
+            this.mov = mov;
         }
     }
 }

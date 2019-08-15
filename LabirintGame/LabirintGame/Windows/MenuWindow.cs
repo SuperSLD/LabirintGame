@@ -37,7 +37,7 @@ namespace LabirintGame.Windows {
         /// </summary>
         public override void Update() {
             KeyboardState keyboardState = Keyboard.GetState();
-
+            Game1.ONLINE = false;
             if (keyboardState.IsKeyDown(Keys.W) && !touched) {
                 b--;
                 touched = true;
@@ -53,7 +53,17 @@ namespace LabirintGame.Windows {
                         Game1.state = 0;
                         break;
                     case 1:
-                        WebSocketConnection.SendMessage("getseed<!>0");
+                        string[] message; 
+                        WebSocketConnection.SendString("getseed<!>0");
+                        while (true) {
+                            message = WebSocketConnection.ReceiveMessage().Result.Split('&');
+                            if (message[0] == "seed") {
+                                GameWindow.Restart(Convert.ToInt32(message[1]));
+                                Game1.state = 0;
+                                Game1.ONLINE = true;
+                                break;
+                            }
+                        }
                         break;
                     case 2:
                         break;
