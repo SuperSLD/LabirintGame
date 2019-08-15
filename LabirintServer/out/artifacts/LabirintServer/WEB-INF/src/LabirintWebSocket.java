@@ -31,18 +31,35 @@ public class LabirintWebSocket {
 
     @OnMessage
     public void onMessage(String message, Session session) {
-        //System.out.println(message);
-        //log.add("<b>message</b> " + message);
         try {
             String[] mes = message.split("<!>");
             if (mes[0].equals("getseed")) {
+                session.getBasicRemote().sendText("fff&0");
                 session.getBasicRemote().sendText("seed&" + Integer.toString(SEED));
+                System.out.println("send seed: " + SEED);
+                log.add("send seed: " + SEED);
             } else if (mes[0].equals("sendxyn")) {
                 for (Session sess : sessions) {
                     if (!sess.equals(session))
                         sess.getBasicRemote().sendText("xyn&"+ mes[1] +
                                 "&" + mes[2] + "&" + mes[3] + "&" + USER_ID);
                 }
+            } else if (mes[0].equals("sendflag")) {
+                log.add("<b>send flag</b> " + message.replaceAll("<", "/")
+                        .replaceAll(">", "/"));
+                for (Session sess : sessions) {
+                    if (!sess.equals(session))
+                        sess.getBasicRemote().sendText("addflag&"+ mes[1] +
+                                "&" + mes[2]);
+                }
+            } else if (mes[0].equals("sendflagbox")) {
+                for (Session sess : sessions) {
+                    if (!sess.equals(session))
+                        sess.getBasicRemote().sendText("deleteflagbox&"+ mes[1] +
+                                "&" + mes[2]);
+                }
+            } else if (mes[0].equals("sendobjectinfo")) {
+
             }
         } catch (Exception ex) {
             ex.printStackTrace();
