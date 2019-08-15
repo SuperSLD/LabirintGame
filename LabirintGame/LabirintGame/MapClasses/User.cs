@@ -138,6 +138,16 @@ namespace LabirintGame.Labirint {
                                     Color.AliceBlue);
         }
 
+        public void Draw(SpriteBatch spriteBatch, TextureManager textureManager, double windowK, int windowX, int windowY) {
+            spriteBatch.Draw(textureManager.GetTexture2D("user_standart" + mov.ToString() + "_" + textCode.ToString()),
+                                    new Rectangle(
+                                        (int) (x * windowK + windowX),
+                                        (int) (y * windowK + windowY),
+                                        (int) (size * windowK),
+                                        (int) (size * windowK)),
+                                    Color.AliceBlue);
+        }
+
         /// <summary>
         /// Возврат координаты плитки по X
         /// </summary>
@@ -215,7 +225,7 @@ namespace LabirintGame.Labirint {
         /// </summary>
         /// <returns></returns>
         public int GetN() {
-            return this.flags;
+            return this.mov;
         }
 
         /// <summary>

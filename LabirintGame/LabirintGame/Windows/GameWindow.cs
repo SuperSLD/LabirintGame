@@ -120,7 +120,7 @@ namespace LabirintGame.Windows {
             }
 
             foreach (String key in list.Keys) {
-                list[key].Draw(spriteBatch, textureManager, windowK);
+                list[key].Draw(spriteBatch, textureManager, windowK , windowX, windowY);
             }
             user.Draw(spriteBatch, textureManager, windowK);
 
@@ -156,6 +156,9 @@ namespace LabirintGame.Windows {
         private static void UpdateThread() {
             while (!Game1.EXIT) if (Game1.state == 0) {
                     map.SendInfo();
+                    foreach (String key in list.Keys) {
+                        list[key].Update(null, null, null);
+                    }
                     Thread.Sleep(100);
             }
         }
@@ -189,10 +192,14 @@ namespace LabirintGame.Windows {
         /// </summary>
         private void SocketSendThread() {
             while (!Game1.EXIT) {
+                int x1 = 0; int y1 = 0;
                 if (Game1.ONLINE) {
-                    Thread.Sleep(100);
-                    WebSocketConnection.SendString("sendxyn<!>" + user.GetX() + "<!>" + user.GetY() + "<!>"
-                         + user.GetN() + "<!>");
+                    Thread.Sleep(10);
+                    if (x1 != user.GetX() || y1 != user.GetY()) {
+                        WebSocketConnection.SendString("sendxyn<!>" + user.GetX() + "<!>" + user.GetY() + "<!>"
+                             + user.GetN() + "<!>");
+                    }
+                    x1 = user.GetX(); y1 = user.GetY();
                 }
             }
         }
