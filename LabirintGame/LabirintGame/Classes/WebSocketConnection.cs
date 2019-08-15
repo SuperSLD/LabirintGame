@@ -13,8 +13,8 @@ namespace LabirintGame.Classes {
 
     class WebSocketConnection {
         //public const string SERVER_WS_URI = "ws://192.168.1.55:8080/labirint";
-        public const string SERVER_WS_URI = "ws://localhost:8080/labirint";
-        //public const string SERVER_WS_URI = "ws://10.6.193.20:8080/labirint";
+        //public const string SERVER_WS_URI = "ws://localhost:8080/labirint";
+        public const string SERVER_WS_URI = "ws://10.6.193.20:8080/labirint";
 
         private static ClientWebSocket socket;
         private static CancellationToken token;
