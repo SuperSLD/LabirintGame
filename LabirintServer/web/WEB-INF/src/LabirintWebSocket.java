@@ -19,7 +19,6 @@ public class LabirintWebSocket {
     public void onOpen(Session session) {
         sessions.add(session);
         log.add("<b>new user connect</b> " + USER_ID);
-        session.setMaxIdleTimeout(1000*60*60*24);
         System.out.println("new user connect " + USER_ID);
 
     }
