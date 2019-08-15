@@ -31,6 +31,7 @@ namespace LabirintGame.Windows {
             new Thread(Timer).Start();
         }
 
+        private bool threadStart = false;
         private static bool touched = false;
         /// <summary>
         /// Обновление логики.
@@ -53,6 +54,10 @@ namespace LabirintGame.Windows {
                         Game1.state = 0;
                         break;
                     case 1:
+                        if (!threadStart) {
+                            threadStart = true;
+                            new Thread(SeedThread).Start();
+                        }
                         break;
                     case 2:
                         break;
@@ -187,6 +192,18 @@ namespace LabirintGame.Windows {
                                 Game1.TILE_SIZE * 4,
                                 Game1.TILE_SIZE * 2),
                                 Color.AliceBlue);
+        }
+
+        private void SeedThread() {
+            WebSocketConnection.SendString("getseed<!>0");
+            string message = "";
+            while (message.Split('&')[0] != "seed") {
+                message = WebSocketConnection.ReceiveMessage().Result;
+            }
+            GameWindow.Restart(Convert.ToInt32(message.Split('&')[1]));
+            Game1.state = 0;
+            Game1.ONLINE = true;
+            threadStart = false;
         }
     }
 }

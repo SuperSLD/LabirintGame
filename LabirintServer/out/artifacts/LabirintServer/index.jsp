@@ -9,6 +9,11 @@
 <html>
   <head>
     <title>Log Page</title>
+    <style>
+      * {
+        font-family: Consolas;
+      }
+    </style>
   </head>
   <body>
   ${log}

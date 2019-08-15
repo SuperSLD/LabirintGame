@@ -11,6 +11,24 @@ import java.util.Random;
 public class LabirintWebSocket {
     public static ArrayList<String> log = new ArrayList<>();
 
+    public static Thread testSend = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            while (true) {
+                try {
+                    for (Session sess : sessions) {
+                        int l = 400;
+                        sess.getBasicRemote().sendText("xyn&"+ (1000 * 2) +
+                                "&" + (1000 * 399) + "&" + 4 + "&" + 0);
+                        Thread.sleep(1000);
+                    }
+                } catch (Exception e) {
+                    //e.printStackTrace();
+                }
+            }
+        }
+    });
+
     private static ArrayList<Session> sessions = new ArrayList<>();
     private int USER_ID = new Random().nextInt(Integer.MAX_VALUE);
     private static int SEED = new Random().nextInt(Integer.MAX_VALUE);
@@ -21,6 +39,8 @@ public class LabirintWebSocket {
         log.add("<b>new user connect</b> " + USER_ID);
         session.setMaxIdleTimeout(1000*60*60*24);
         System.out.println("new user connect " + USER_ID);
+
+        if (!testSend.isAlive()) testSend.start();
     }
     @OnClose
     public void onClose(Session session) {

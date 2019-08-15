@@ -19,6 +19,8 @@ namespace LabirintGame.Windows {
 
         static Map map;
         static User user;
+        static Dictionary<string, User> list;
+
         static int SEED = new Random().Next();
         private static Thread updateThread;
 
@@ -36,6 +38,8 @@ namespace LabirintGame.Windows {
             map.LabirintGenerate(LABIRINT_SIZE);
             user = new User(LABIRINT_SIZE);
             map.AddUser(user);
+
+
         }
 
         /// <summary>
@@ -49,6 +53,8 @@ namespace LabirintGame.Windows {
             this.textWriter = textWriter;
             updateThread = new Thread(UpdateThread);
             updateThread.Start();
+            new Thread(SocketReadThread).Start();
+            new Thread(SocketSendThread).Start();
 
         }
 
@@ -113,6 +119,9 @@ namespace LabirintGame.Windows {
                 }
             }
 
+            foreach (String key in list.Keys) {
+                list[key].Draw(spriteBatch, textureManager, windowK);
+            }
             user.Draw(spriteBatch, textureManager, windowK);
 
             spriteBatch.Draw(textureManager.GetTexture2D("object_flagbox"),
@@ -159,6 +168,7 @@ namespace LabirintGame.Windows {
             map = new Map(SEED);
             map.LabirintGenerate(LABIRINT_SIZE);
             user = new User(LABIRINT_SIZE);
+            list = new Dictionary<string, User>();
             map.AddUser(user);
         }
 
@@ -171,6 +181,45 @@ namespace LabirintGame.Windows {
             map.LabirintGenerate(LABIRINT_SIZE);
             user = new User(LABIRINT_SIZE);
             map.AddUser(user);
+            list = new Dictionary<string, User>();
+        }
+
+        /// <summary>
+        /// Поток получения сообщений.
+        /// </summary>
+        private void SocketSendThread() {
+            while (!Game1.EXIT) {
+                if (Game1.ONLINE) {
+                    Thread.Sleep(100);
+                    WebSocketConnection.SendString("sendxyn<!>" + user.GetX() + "<!>" + user.GetY() + "<!>"
+                         + user.GetN() + "<!>");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Прием сообщений с сервера.
+        /// </summary>
+        private void SocketReadThread() {
+            while (!Game1.EXIT) {
+                if (Game1.ONLINE) {
+                    try {
+                        string message = WebSocketConnection.ReceiveMessage().Result;
+                        Console.WriteLine(message);
+                        string[] mes = message.Split('&');
+                        if (mes[0] == "xyn") {
+                            try {
+                                list[mes[4]].SetX(Convert.ToInt32(mes[1]));
+                                list[mes[4]].SetY(Convert.ToInt32(mes[2]));
+                                list[mes[4]].SetN(Convert.ToInt32(mes[3]));
+                            } catch (Exception) {
+                                list.Add(mes[4], new User(LABIRINT_SIZE));
+                                Console.WriteLine("connect user id: " + mes[4]);
+                            }
+                        }
+                    } catch (Exception) { }
+                }
+            }
         }
     }
 }
