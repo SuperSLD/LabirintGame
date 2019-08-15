@@ -196,15 +196,15 @@ namespace LabirintGame.Windows {
         /// Поток получения сообщений.
         /// </summary>
         private void SocketSendThread() {
+            int x1 = 0; int y1 = 0;
             while (!Game1.EXIT) {
-                int x1 = 0; int y1 = 0;
                 if (Game1.ONLINE) {
                     Thread.Sleep(10);
                     // TODO: Получить список объектов.
-                    /*if (!objectUpdate) {
+                    if (!objectUpdate) {
                         objectUpdate = true;
                         WebSocketConnection.SendString("sendobjectinfo<!>0");
-                    }*/
+                    }
                     if (x1 != user.GetX() || y1 != user.GetY()) {
                         WebSocketConnection.SendString("sendxyn<!>" + user.GetX() + "<!>" + user.GetY() + "<!>"
                              + user.GetN() + "<!>");

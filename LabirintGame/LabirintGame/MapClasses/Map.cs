@@ -197,7 +197,7 @@ namespace Labirint {
                 user.SetFlags(user.GetFlags() - 1);
                 objects.Add(new Flag((user.GetX() + user.GetSize()/2) / 1000, (user.GetY() + user.GetSize()/2) / 1000));
                 WebSocketConnection.SendString("sendflag<!>" + ((user.GetX() + user.GetSize() / 2) / 1000).ToString()
-                    + "<!>" + ((user.GetX() + user.GetSize() / 2) / 1000).ToString());
+                    + "<!>" + ((user.GetY() + user.GetSize() / 2) / 1000).ToString());
             }
         }
 
