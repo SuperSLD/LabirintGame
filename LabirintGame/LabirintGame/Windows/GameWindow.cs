@@ -28,6 +28,7 @@ namespace LabirintGame.Windows {
         /// Самый обычный пустой конструктор.
         /// </summary>
         public GameWindow() : base() {
+
         }
 
         /// <summary>

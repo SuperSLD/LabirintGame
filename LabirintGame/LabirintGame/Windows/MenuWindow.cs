@@ -198,7 +198,11 @@ namespace LabirintGame.Windows {
             WebSocketConnection.SendString("getseed<!>0");
             string message = "";
             while (message.Split('&')[0] != "seed") {
-                message = WebSocketConnection.ReceiveMessage().Result;
+                try {
+                    message = WebSocketConnection.ReceiveMessage().Result;
+                } catch (Exception) {
+                    break;
+                }
             }
             GameWindow.Restart(Convert.ToInt32(message.Split('&')[1]));
             Game1.state = 0;

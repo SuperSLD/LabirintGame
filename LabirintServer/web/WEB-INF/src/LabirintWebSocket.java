@@ -32,8 +32,8 @@ public class LabirintWebSocket {
 
     @OnMessage
     public void onMessage(String message, Session session) {
-        System.out.println(message);
-        log.add("<b>message</b> " + message);
+        //System.out.println(message);
+        //log.add("<b>message</b> " + message);
         try {
             String[] mes = message.split("<!>");
             if (mes[0].equals("getseed")) {

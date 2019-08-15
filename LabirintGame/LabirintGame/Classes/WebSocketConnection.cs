@@ -35,9 +35,13 @@ namespace LabirintGame.Classes {
         /// <param name="data"></param>
         /// <returns></returns>
         public static Task SendString(String data) {
-            var encoded = Encoding.UTF8.GetBytes(data);
-            var buffer = new ArraySegment<Byte>(encoded, 0, encoded.Length);
-            return socket.SendAsync(buffer, WebSocketMessageType.Text, true, new CancellationToken());
+            if (socket.State == WebSocketState.Open) {
+                var encoded = Encoding.UTF8.GetBytes(data);
+                var buffer = new ArraySegment<Byte>(encoded, 0, encoded.Length);
+                return socket.SendAsync(buffer, WebSocketMessageType.Text, true, new CancellationToken());
+            } else {
+                return null;
+            }
         }
 
         /// <summary>
@@ -45,15 +49,19 @@ namespace LabirintGame.Classes {
         /// </summary>
         /// <returns></returns>
         public static async Task<string> ReceiveMessage() {
-            byte[] buffer = new byte[1024 * 2];
-            var segment = new ArraySegment<byte>(buffer);
-            var message = new StringBuilder();
-            WebSocketReceiveResult result;
-            do {
-                result = await socket.ReceiveAsync(segment, token).ConfigureAwait(false);
-                message.Append(Encoding.UTF8.GetString(segment.Array, 0, result.Count));
-            } while (!token.IsCancellationRequested && !result.EndOfMessage);
-            return message.ToString();
+            if (socket.State == WebSocketState.Open) {
+                byte[] buffer = new byte[1024 * 2];
+                var segment = new ArraySegment<byte>(buffer);
+                var message = new StringBuilder();
+                WebSocketReceiveResult result;
+                do {
+                    result = await socket.ReceiveAsync(segment, token).ConfigureAwait(false);
+                    message.Append(Encoding.UTF8.GetString(segment.Array, 0, result.Count));
+                } while (!token.IsCancellationRequested && !result.EndOfMessage);
+                return message.ToString();
+            } else {
+                return null;
+            }
         }
 
         /// <summary>

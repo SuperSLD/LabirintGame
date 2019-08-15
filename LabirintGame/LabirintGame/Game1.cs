@@ -63,6 +63,8 @@ namespace LabirintGame {
             textureManager = new TextureManager();
             textWriter = new TextWriter(textureManager);
 
+            WebSocketConnection.Connect();
+
             foreach (Window window in windows) {
                 window.LoadContent(textureManager, spriteBatch, textWriter);
             }
@@ -102,8 +104,6 @@ namespace LabirintGame {
 
             textureManager.AddTexture("object_flag", Content.Load<Texture2D>("object_flag"));
             textureManager.AddTexture("object_flagbox", Content.Load<Texture2D>("object_flagbox"));
-
-            WebSocketConnection.Connect();
         }
 
         /// <summary>
