@@ -56,6 +56,7 @@
     <session id="340339122">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.3" value="1" />
@@ -171,7 +172,7 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-15" />
     <option name="width" value="1950" />
     <option name="height" value="2075" />
@@ -310,15 +311,16 @@
       <workItem from="1565612877591" duration="4980000" />
       <workItem from="1565782179385" duration="643000" />
       <workItem from="1565827927944" duration="577000" />
-      <workItem from="1565859123908" duration="19441000" />
+      <workItem from="1565859123908" duration="19682000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34770000" />
+    <option name="totallyTimeSpent" value="35011000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="0" width="780" height="830" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.5228849" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -331,7 +333,7 @@
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" x="768" y="29" width="767" height="795" id="Run" order="2" type="WINDOWED" visible="true" weight="0.46175638" />
+      <window_info anchor="bottom" x="768" y="29" width="767" height="795" id="Run" order="2" type="WINDOWED" weight="0.46175638" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
