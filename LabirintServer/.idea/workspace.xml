@@ -101,8 +101,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/src/LabirintWebSocket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="72" selection-start-line="72" selection-end-line="72" />
+            <state relative-caret-position="311">
+              <caret line="59" column="42" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -310,15 +310,15 @@
       <workItem from="1565612877591" duration="4980000" />
       <workItem from="1565782179385" duration="643000" />
       <workItem from="1565827927944" duration="577000" />
-      <workItem from="1565859123908" duration="17904000" />
+      <workItem from="1565859123908" duration="19441000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33233000" />
+    <option name="totallyTimeSpent" value="34770000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="780" height="830" extended-state="1" />
+    <frame x="-6" y="0" width="780" height="830" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.5228849" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -394,8 +394,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/src/LabirintWebSocket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
+        <state relative-caret-position="311">
+          <caret line="59" column="42" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
         </state>
       </provider>
     </entry>

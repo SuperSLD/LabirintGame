@@ -26,7 +26,6 @@ namespace LabirintGame {
         public static int TILE_SIZE;
         public static int USER_ID = 0;
         public static bool EXIT = false;
-        public static bool ONLINE = false;
 
         public Game1() {
             graphics = new GraphicsDeviceManager(this);
@@ -62,8 +61,6 @@ namespace LabirintGame {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             textureManager = new TextureManager();
             textWriter = new TextWriter(textureManager);
-
-            WebSocketConnection.Connect();
 
             foreach (Window window in windows) {
                 window.LoadContent(textureManager, spriteBatch, textWriter);
@@ -122,7 +119,6 @@ namespace LabirintGame {
             if ((GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Enter))
                 && (state == 1 && MenuWindow.b == 2)) {
                 EXIT = true;
-                WebSocketConnection.Close();
                 Exit();
             }
 

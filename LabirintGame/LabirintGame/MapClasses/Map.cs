@@ -197,9 +197,6 @@ namespace Labirint {
                 && SearchMapObject((user.GetX() + user.GetSize()/2)/1000, (user.GetY() + user.GetSize()/2) / 1000) < 0) {
                 user.SetFlags(user.GetFlags() - 1);
                 objects.Add(new Flag((user.GetX() + user.GetSize()/2) / 1000, (user.GetY() + user.GetSize()/2) / 1000));
-                if (Game1.ONLINE)
-                WebSocketConnection.SendString("sendflag<!>" + ((user.GetX() + user.GetSize() / 2) / 1000).ToString()
-                    + "<!>" + ((user.GetY() + user.GetSize() / 2) / 1000).ToString());
             }
         }
 

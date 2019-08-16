@@ -55,9 +55,6 @@ namespace LabirintGame.Windows {
             this.textWriter = textWriter;
             updateThread = new Thread(UpdateThread);
             updateThread.Start();
-            new Thread(SocketReadThread).Start();
-            new Thread(SocketSendThread).Start();
-
         }
 
         /// <summary>
@@ -72,10 +69,7 @@ namespace LabirintGame.Windows {
             if (keyboardState.IsKeyDown(Keys.S))      user.Move(4, map.GetLabirint());
             if (keyboardState.IsKeyDown(Keys.W))      user.Move(2, map.GetLabirint());
             if (keyboardState.IsKeyDown(Keys.Space))  map.AddFlag();
-            if (keyboardState.IsKeyDown(Keys.Escape)) {
-                Game1.state = 1;
-                if (Game1.ONLINE) WebSocketConnection.SendString("exit<!>0");
-            }
+            if (keyboardState.IsKeyDown(Keys.Escape)) Game1.state = 1;
         }
 
         int L; double windowK; int windowX; int windowY;
@@ -193,58 +187,6 @@ namespace LabirintGame.Windows {
             list = new Dictionary<string, User>();
 
             objectUpdate = false;
-        }
-
-        /// <summary>
-        /// Поток получения сообщений.
-        /// </summary>
-        private void SocketSendThread() {
-            int x1 = 0; int y1 = 0;
-            while (!Game1.EXIT) {
-                if (Game1.ONLINE && Game1.state == 0) {
-                    Thread.Sleep(10);
-                    // TODO: Получить список объектов.
-                    if (!objectUpdate) {
-                        objectUpdate = true;
-                        WebSocketConnection.SendString("sendobjectinfo<!>0");
-                        Thread.Sleep(100);
-                    }
-                    if (x1 != user.GetX() || y1 != user.GetY()) {
-                        WebSocketConnection.SendString("sendxyn<!>" + user.GetX() + "<!>" + user.GetY() + "<!>"
-                             + user.GetN() + "<!>");
-                    }
-                    x1 = user.GetX(); y1 = user.GetY();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Прием сообщений с сервера.
-        /// </summary>
-        private void SocketReadThread() {
-            while (!Game1.EXIT) {
-                if (Game1.ONLINE && Game1.state == 0) {
-                    try {
-                        string message = WebSocketConnection.ReceiveMessage().Result;
-                        Console.WriteLine("SocketReadThread : " + message);
-                        string[] mes = message.Split('&');
-                        if (mes[0] == "xyn") {
-                            try {
-                                list[mes[4]].SetX(Convert.ToInt32(mes[1]));
-                                list[mes[4]].SetY(Convert.ToInt32(mes[2]));
-                                list[mes[4]].SetN(Convert.ToInt32(mes[3]));
-                            } catch (Exception) {
-                                list.Add(mes[4], new User(LABIRINT_SIZE));
-                                Console.WriteLine("connect user id: " + mes[4]);
-                            }
-                        } else if (mes[0] == "addflag") {
-                            map.AddFlag(Convert.ToInt32(mes[1]), Convert.ToInt32(mes[2]));
-                        } else if (mes[0] == "userexit") {
-                            list.Remove(mes[1]);
-                        }
-                    } catch (Exception) { }
-                }
-            }
         }
     }
 }
