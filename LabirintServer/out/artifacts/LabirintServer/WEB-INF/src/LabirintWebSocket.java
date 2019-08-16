@@ -57,23 +57,21 @@ public class LabirintWebSocket {
                                 "&" + mes[2]);
                 }
                 flags.add(new Dot(Integer.parseInt(mes[1]), Integer.parseInt(mes[2])));
-            } else if (mes[0].equals("sendflagbox")) {
-                for (Session sess : sessions) {
-                    if (!sess.equals(session))
-                        sess.getBasicRemote().sendText("deleteflagbox&"+ mes[1] +
-                                "&" + mes[2]);
-                }
-                flags.add(new Dot(Integer.parseInt(mes[1]), Integer.parseInt(mes[2])));
             } else if (mes[0].equals("sendobjectinfo")) {
                 for (Dot dot : flags) {
                     session.getBasicRemote().sendText("addflag&"+ dot.x +
                             "&" + dot.y);
                 }
-                for (Dot dot : flagbox) {
-                    session.getBasicRemote().sendText("addflag&"+ dot.x +
-                            "&" + dot.y);
+            } else if (mes[0].equals("exit")) {
+                log.add("<b>exit</b> " + message.replaceAll("<", "/")
+                        .replaceAll(">", "/"));
+                System.out.println("exit : "  + message);
+                for (Session sess : sessions) {
+                    if (!sess.equals(session))
+                        sess.getBasicRemote().sendText("userexit&" + USER_ID);
                 }
             }
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
