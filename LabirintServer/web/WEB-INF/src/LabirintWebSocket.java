@@ -63,14 +63,13 @@ public class LabirintWebSocket {
                             "&" + dot.y);
                 }
             } else if (mes[0].equals("exit")) {
-                log.add("<b>send flag</b> " + message.replaceAll("<", "/")
+                log.add("<b>exit</b> " + message.replaceAll("<", "/")
                         .replaceAll(">", "/"));
-                System.out.println("send flag : "  + message);
+                System.out.println("exit : "  + message);
                 for (Session sess : sessions) {
                     if (!sess.equals(session))
                         sess.getBasicRemote().sendText("userexit&" + USER_ID);
                 }
-                flags.add(new Dot(Integer.parseInt(mes[1]), Integer.parseInt(mes[2])));
             }
 
         } catch (Exception ex) {
