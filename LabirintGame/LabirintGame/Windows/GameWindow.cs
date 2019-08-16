@@ -72,7 +72,10 @@ namespace LabirintGame.Windows {
             if (keyboardState.IsKeyDown(Keys.S))      user.Move(4, map.GetLabirint());
             if (keyboardState.IsKeyDown(Keys.W))      user.Move(2, map.GetLabirint());
             if (keyboardState.IsKeyDown(Keys.Space))  map.AddFlag();
-            if (keyboardState.IsKeyDown(Keys.Escape)) Game1.state = 1;
+            if (keyboardState.IsKeyDown(Keys.Escape)) {
+                Game1.state = 1;
+                if (Game1.ONLINE) WebSocketConnection.SendString("exit<!>0");
+            }
         }
 
         int L; double windowK; int windowX; int windowY;
