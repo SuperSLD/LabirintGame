@@ -15,6 +15,9 @@ public class LabirintWebSocket {
     private int USER_ID = new Random().nextInt(Integer.MAX_VALUE);
     private static int SEED = new Random().nextInt(Integer.MAX_VALUE);
 
+    private static ArrayList<Dot> flags = new ArrayList<>();
+    private static ArrayList<Dot> flagbox = new ArrayList<>();
+
     @OnOpen
     public void onOpen(Session session) {
         sessions.add(session);
@@ -47,20 +50,29 @@ public class LabirintWebSocket {
             } else if (mes[0].equals("sendflag")) {
                 log.add("<b>send flag</b> " + message.replaceAll("<", "/")
                         .replaceAll(">", "/"));
+                System.out.println("send flag : "  + message);
                 for (Session sess : sessions) {
                     if (!sess.equals(session))
                         sess.getBasicRemote().sendText("addflag&"+ mes[1] +
                                 "&" + mes[2]);
                 }
-            } else if (mes[0].equals("sendflagbox")) {
+                flags.add(new Dot(Integer.parseInt(mes[1]), Integer.parseInt(mes[2])));
+            } else if (mes[0].equals("sendobjectinfo")) {
+                for (Dot dot : flags) {
+                    session.getBasicRemote().sendText("addflag&"+ dot.x +
+                            "&" + dot.y);
+                }
+            } else if (mes[0].equals("exit")) {
+                log.add("<b>send flag</b> " + message.replaceAll("<", "/")
+                        .replaceAll(">", "/"));
+                System.out.println("send flag : "  + message);
                 for (Session sess : sessions) {
                     if (!sess.equals(session))
-                        sess.getBasicRemote().sendText("deleteflagbox&"+ mes[1] +
-                                "&" + mes[2]);
+                        sess.getBasicRemote().sendText("userexit&" + USER_ID);
                 }
-            } else if (mes[0].equals("sendobjectinfo")) {
-
+                flags.add(new Dot(Integer.parseInt(mes[1]), Integer.parseInt(mes[2])));
             }
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -69,5 +81,15 @@ public class LabirintWebSocket {
     @OnError
     public void onError(Throwable t) {
 
+    }
+}
+
+class Dot {
+    public int x;
+    public int y;
+
+    public Dot(int x, int y) {
+       this.x = x;
+       this.y = y;
     }
 }
