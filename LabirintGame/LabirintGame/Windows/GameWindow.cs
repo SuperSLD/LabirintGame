@@ -198,12 +198,13 @@ namespace LabirintGame.Windows {
         private void SocketSendThread() {
             int x1 = 0; int y1 = 0;
             while (!Game1.EXIT) {
-                if (Game1.ONLINE) {
+                if (Game1.ONLINE && Game1.state == 0) {
                     Thread.Sleep(10);
                     // TODO: Получить список объектов.
                     if (!objectUpdate) {
                         objectUpdate = true;
                         WebSocketConnection.SendString("sendobjectinfo<!>0");
+                        Thread.Sleep(100);
                     }
                     if (x1 != user.GetX() || y1 != user.GetY()) {
                         WebSocketConnection.SendString("sendxyn<!>" + user.GetX() + "<!>" + user.GetY() + "<!>"
@@ -219,7 +220,7 @@ namespace LabirintGame.Windows {
         /// </summary>
         private void SocketReadThread() {
             while (!Game1.EXIT) {
-                if (Game1.ONLINE) {
+                if (Game1.ONLINE && Game1.state == 0) {
                     try {
                         string message = WebSocketConnection.ReceiveMessage().Result;
                         Console.WriteLine("SocketReadThread : " + message);
@@ -235,6 +236,8 @@ namespace LabirintGame.Windows {
                             }
                         } else if (mes[0] == "addflag") {
                             map.AddFlag(Convert.ToInt32(mes[1]), Convert.ToInt32(mes[2]));
+                        } else if (mes[0] == "userexit") {
+                            list.Remove(mes[1]);
                         }
                     } catch (Exception) { }
                 }
