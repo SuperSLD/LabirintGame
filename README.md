@@ -7,4 +7,3 @@
 + [Соляной Леонид](https://vk.com/seks_simvo1)
 
 ![](https://sun9-19.userapi.com/c855220/v855220931/18a495/Ymz0mS-J8rg.jpg)
-![](https://sun9-65.userapi.com/c855428/v855428931/18507a/x9igfJF1DMQ.jpg)
